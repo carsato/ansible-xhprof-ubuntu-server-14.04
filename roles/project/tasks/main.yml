@@ -1,17 +1,20 @@
 ---
-- name: Assures {{ project_document_root }}/htdocs dir exists
-  file: path={{ project_document_root }}/htdocs state=directory
-- name: Copy file
-  template:
-    src: code.htdocs.j2
-    dest: "{{ project_document_root }}/htdocs/code.htdocs"
+- name: mkdir project folder
+  file: dest={{ project_document_root }} mode=755 owner=www-data group=www-data state=directory
 
-- name: Assures {{ project_document_root }}/logs dir exists
-  file: path={{ project_document_root }}/logs state=directory
-- name: Copy file
-  template:
-    src: code.htdocs.j2
-    dest: "{{ project_document_root }}/logs/code.htdocs"
+- name: mkdir htdocs folder
+  file: dest={{ project_document_root }}/htdocs mode=755 owner=www-data group=www-data state=directory
+
+- name: mkdir logs folder
+  file: dest={{ project_document_root }}/logs mode=755 owner=www-data group=www-data state=directory
+
+- name: Make sure {{ project_document_root }}/htdocs is owned by www-data
+  action: file path={{ project_document_root }}/htdocs owner=www-data group=www-data
+
+- name: Make sure {{ project_document_root }}/logs is owned by www-data
+  action: file path={{ project_document_root }}/logs owner=www-data group=www-data
+
+
 
 - name: Copy across new virtual host (project)
   template:
@@ -31,13 +34,14 @@
 
 
 
-- name: Make sure {{ project_document_root }}/htdocs is owned by www-data
-  action: file path={{ project_document_root }}/htdocs owner=www-data group=www-data
-
-- name: Make sure {{ project_document_root }}/logs is owned by www-data
-  action: file path={{ project_document_root }}/logs owner=www-data group=www-data
-
 - name: Add the virtualhosts to the file /etc/hosts
   lineinfile: dest=/etc/hosts line="127.0.0.1 {{item.server_name}}"
   sudo: yes
   with_items: vhosts
+
+
+- name: 3. Create a new database
+  mysql_db: name=project state=present collation=utf8_general_ci
+
+- name: 4. Create a database user
+  mysql_user: name=project password=project priv=*.*:ALL host=localhost state=present

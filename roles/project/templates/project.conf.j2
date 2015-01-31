@@ -5,7 +5,7 @@
     ServerAlias *.{{ project_host }}
 
 
-    DocumentRoot {{ project_document_root }}
+    DocumentRoot {{ project_document_root }}/htdocs
     <Directory {{ project_document_root }}/htdocs/>
             Options +Indexes +FollowSymLinks -MultiViews
             AllowOverride all
