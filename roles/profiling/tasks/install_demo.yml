@@ -1,13 +1,13 @@
 ---
 - name: Install demo PHP script
-  copy: src=profiling.php dest=/var/www/ mode=0644
+  copy: src=profiling.php dest=/var/www/html/ mode=0644
   tags: profiling
 
 - name: Make sure /var/www/ is owned by www-data
-  action: file path=/var/www/ owner=www-data group=www-data
+  action: file path=/var/www/html/ owner=www-data group=www-data
 
 - name: Make sure /var/www/profiling is owned by www-data
-  action: file path=/var/www/profiling.php owner=www-data group=www-data
+  action: file path=/var/www/html/profiling.php owner=www-data group=www-data
 
 - name: Make sure /data/xhgui/xhprof_html is owned by www-data
   action: file path=/data/xhgui/xhprof_html owner=www-data group=www-data
