@@ -1,0 +1,14 @@
+# profiling.yml
+---
+- hosts: all
+
+  sudo: true
+
+  # pre_tasks:
+  #   - name: update apt cache
+  #     apt: update_cache=yes
+
+  roles:
+    - webserver
+    - database
+    - profiling
