@@ -1,0 +1,12 @@
+---
+- name: install vim
+  apt: name=vim state=present
+
+- name: install zip
+  apt: name=zip state=present
+
+- name: install unzip
+  apt: name=unzip state=present
+
+- name: install drush
+  apt: name=drush state=present

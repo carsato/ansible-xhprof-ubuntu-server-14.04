@@ -2,8 +2,8 @@
 - name: mkdir project folder
   file: dest={{ project_document_root }} mode=755 owner=www-data group=www-data state=directory
 
-- name: mkdir htdocs folder
-  file: dest={{ project_document_root }}/htdocs mode=755 owner=www-data group=www-data state=directory
+# - name: mkdir htdocs folder
+#   file: dest={{ project_document_root }}/htdocs mode=755 owner=www-data group=www-data state=directory
 
 - name: mkdir logs folder
   file: dest={{ project_document_root }}/logs mode=755 owner=www-data group=www-data state=directory

@@ -19,7 +19,16 @@
   copy: src=php/mods-available/xhprof.ini dest=/etc/php5/mods-available/ owner=root mode=0644
   tags: profiling
 
-- name: Enable module
+- name: Enable module xhprof
   shell: php5enmod xhprof
   notify: restart apache
   tags: profiling
+
+- name: Enable module xdebug
+  shell: php5enmod xdebug
+  notify: restart apache
+  tags: profiling
+
+# - name: PHP | XDebug configuration
+#   action: template src=templates/php-xdebug.j2 dest=/etc/php5/mods-available/xdebug.ini
+#   tags: common

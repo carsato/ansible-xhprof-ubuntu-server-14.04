@@ -9,7 +9,9 @@
   #     apt: update_cache=yes
 
   roles:
+    - general
     - webserver
+    - memcached
     - database
     - profiling
     - project

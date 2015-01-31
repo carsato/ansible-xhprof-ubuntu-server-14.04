@@ -21,3 +21,8 @@
 - name: #4. install Hello World PHP script
   copy: src=index.php dest=/var/www/index.php mode=0664
 
+- name: install php5-mcrypt
+  apt: name=php5-mcrypt state=present
+
+- name: install php5-curl
+  apt: name=php5-curl state=present
