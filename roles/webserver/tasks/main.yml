@@ -9,7 +9,7 @@
 - name: #1. install Apache
   apt: name=apache2 state=present
 
-- name: #1. install Apache
+- name: php5-gd
   apt: name=php5-gd state=present
 
 - name: #2. install PHP module for Apache

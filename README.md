@@ -13,3 +13,8 @@ vagrant up
 
 #install xhprof on vagrant machine
 ansible-playbook -i hosts profiling.yml -v
+
+
+#vbox guest additions 4.3.10 bug
+vagrant ssh
+sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions

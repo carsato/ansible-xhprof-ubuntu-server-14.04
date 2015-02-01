@@ -4,9 +4,9 @@
 
   sudo: true
 
-  # pre_tasks:
-  #   - name: update apt cache
-  #     apt: update_cache=yes
+  pre_tasks:
+    - name: update apt cache
+      apt: update_cache=yes
 
   roles:
     - general
@@ -14,4 +14,4 @@
     - memcached
     - database
     - profiling
-    - project
+    - bodeboca
