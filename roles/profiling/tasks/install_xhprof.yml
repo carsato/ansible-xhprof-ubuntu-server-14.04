@@ -32,3 +32,7 @@
 # - name: PHP | XDebug configuration
 #   action: template src=templates/php-xdebug.j2 dest=/etc/php5/mods-available/xdebug.ini
 #   tags: common
+
+- name: copy header.php
+  copy: src=xhgui/header.php dest=/data/xhgui/external/ mode=0644
+  tags: profiling

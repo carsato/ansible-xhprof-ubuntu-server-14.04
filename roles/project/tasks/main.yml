@@ -16,17 +16,17 @@
 
 
 
-- name: Copy across new virtual host (bodeboca)
+- name: Copy across new virtual host (project)
   template:
     src=project.conf.j2
-    dest=/etc/apache2/sites-available/bodeboca.conf
+    dest=/etc/apache2/sites-available/project.conf
   notify:
     - reload apache
 
-- name: Enable new bodeboca virtual host
+- name: Enable new project virtual host
   file:
-    src=/etc/apache2/sites-available/bodeboca.conf
-    dest=/etc/apache2/sites-enabled/bodeboca.conf
+    src=/etc/apache2/sites-available/project.conf
+    dest=/etc/apache2/sites-enabled/project.conf
     state=link
   notify:
     - reload apache
@@ -45,7 +45,12 @@
 
 
 - name: 3. Create a new database
-  mysql_db: name=bodeboca state=present collation=utf8_general_ci
+  mysql_db: name=project state=present collation=utf8_general_ci
 
 - name: 4. Create a database user
-  mysql_user: name=bodeboca password=bodeboca priv=*.*:ALL host=localhost state=present
+  mysql_user: name=project password=project priv=*.*:ALL host=localhost state=present
+
+- command: ./importar-db.sh current.sql
+  args:
+    chdir: "{{ project_document_root }}/htdocs"
+

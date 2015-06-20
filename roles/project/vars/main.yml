@@ -1,0 +1,6 @@
+---
+project_document_root: /var/www/project
+project_host: dev.www.project.com
+vhosts:
+  - server_name: dev.www.project.com
+
