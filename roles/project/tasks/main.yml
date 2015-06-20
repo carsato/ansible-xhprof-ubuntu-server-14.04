@@ -50,7 +50,7 @@
 - name: 4. Create a database user
   mysql_user: name=project password=project priv=*.*:ALL host=localhost state=present
 
-- command: ./importar-db.sh current.sql
-  args:
-    chdir: "{{ project_document_root }}/htdocs"
+#- command: ./importar-db.sh current.sql
+#  args:
+#    chdir: "{{ project_document_root }}/htdocs"
 

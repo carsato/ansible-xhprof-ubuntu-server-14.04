@@ -2,6 +2,7 @@
     ServerAdmin webmaster@localhost
     ServerName  {{ project_host }}
     ServerAlias *.{{ project_host }}
+    ServerAlias *.www.{{ project_host }}
 
 
     DocumentRoot {{ project_document_root }}/htdocs
@@ -11,14 +12,6 @@
             #Order allow,deny
             #allow from all
             Require all granted
-    </Directory>
-
-    <Directory {{ project_document_root }}/htdocs/reports/>
-        Options +Indexes +FollowSymLinks -MultiViews
-        AllowOverride all
-        #Order allow,deny
-        #allow from all
-        Require all granted
     </Directory>
 
     ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
